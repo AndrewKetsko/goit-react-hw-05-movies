@@ -12,10 +12,10 @@ export const Layout = () => {
       <nav>
         <ul>
           <li>
-            <StyledLink to={'/'}>homepage </StyledLink>
+            <StyledLink to={'/'}> Trending </StyledLink>
           </li>
           <li>
-            <StyledLink to={'/movies'}>movies </StyledLink>
+            <StyledLink to={'/movies'}> Search </StyledLink>
           </li>
         </ul>
       </nav>
