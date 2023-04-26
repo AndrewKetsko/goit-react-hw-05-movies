@@ -2,6 +2,7 @@ import { Searchbar } from 'components/Searchbar/Searchbar';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
+import { Card, Gallery, Image, Message } from './Home/home.styled';
 
 const Movies = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -38,21 +39,23 @@ const Movies = () => {
   return (
     //state for map
     <>
-      <h2>Search movie</h2>
       <Searchbar search={search} setSearch={setSearch}></Searchbar>
       {/* <input type="text" value={movieID} onChange={updateQueryString} /> */}
-      <ul>
-        {' '}
-        {movies.map(movie => {
-          return (
-            <li key={movie.id}>
-              <Link to={`${movie.id}`} state={{ from: location }}>
-                {movie.title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <Gallery>
+        {movies.map(movie => (
+          <Card key={movie.id}>
+            <Link to={`${movie.id}`} state={{ from: location }}>
+              <Image
+                alt={movie.title}
+                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                width="120"
+                height="180"
+              ></Image>
+              <Message>{movie.title}</Message>{' '}
+            </Link>
+          </Card>
+        ))}
+      </Gallery>
     </>
   );
 };

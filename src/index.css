@@ -13,3 +13,64 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 3px;
+  position: absolute;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: getcolor(accent-color);
+}
+
+body {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  /* font-family: 'Roboto', sans-serif; */
+  /* font-weight: 400; */
+  /* font-size: 12px; */
+  /* line-height: 1.14; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+ul,
+li {
+  list-style-type: none;
+  color: currentColor;
+  padding: 0;
+  margin: 0;
+  cursor: inherit;
+}
+
+img {
+  /* transition: transform 250ms $time-function; */
+  display: block;
+  /* max-width: 100%; */
+  height: auto;
+  object-fit: cover;
+  cursor: inherit;
+}

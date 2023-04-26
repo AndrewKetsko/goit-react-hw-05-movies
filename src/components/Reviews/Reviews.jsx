@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
+import axios from 'axios';
+import { List, Card } from './reviews.styled';
 
 const Reviews = () => {
   const { movieID } = useParams();
@@ -21,12 +22,14 @@ const Reviews = () => {
   }, [movieID]);
 
   return (
-    <ul>
-      {reviews.map(review => <li key={review.id}>
-      <p>Author: {review.author}</p>
-            <p>{review.content}</p>
-      </li>)}
-    </ul>
+    <List>
+      {reviews.map(review => (
+        <Card key={review.id}>
+          <h4>Author: {review.author}</h4>
+          <p>{review.content}</p>
+        </Card>
+      ))}
+    </List>
   );
 };
 

@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { useParams, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Image, Title, Wrapper, Headers, GenresList, AdInfo, StyledLink } from './details.styled';
 
 const MovieDetails = () => {
   const location = useLocation();
@@ -27,34 +28,40 @@ const MovieDetails = () => {
   }, [movieID]);
   return (
     <>
-      <Link to={locationLink.current}>V--- Back to previous page</Link>
-      <div>
-        <img
+      <StyledLink to={locationLink.current}>
+      Back to previous page
+      </StyledLink>
+      <Wrapper>
+        <Image
           alt={details.title}
           src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
-          width="240"
-          height="357"
-        ></img>
-        <h2>{details.title}</h2>
-        <p>User score: {details.vote_average * 10}%</p>
-        <p>Overview</p>
-        <p>{details.overview}</p>
-        <p>Genres</p>
-          <ul>
+        ></Image>
+        <div>
+          <Title>{details.title}</Title>
+          <Headers>User score: {details.vote_average * 10}%</Headers>
+          <Headers>Overview</Headers>
+          <p>{details.overview}</p>
+          <Headers>Genres</Headers>
+          <GenresList>
             {details.genres?.map(genre => (
               <li key={genre.id}>{genre.name}</li>
             ))}
-          </ul>
-      </div>
-      <p>Additional information</p>
-      <ul>
+          </GenresList>
+        </div>
+      </Wrapper>
+      {/* <Title>Additional information</Title> */}
+      <AdInfo>
         <li>
-          <Link to="cast">cast</Link>
+          <Headers>
+            <Link to="cast">cast</Link>
+          </Headers>
         </li>
         <li>
-          <Link to="reviews">reviews</Link>
+          <Headers>
+            <Link to="reviews">reviews</Link>
+          </Headers>
         </li>
-      </ul>
+      </AdInfo>
       <Suspense fallback={<div>Loading</div>}>
         <Outlet />
       </Suspense>

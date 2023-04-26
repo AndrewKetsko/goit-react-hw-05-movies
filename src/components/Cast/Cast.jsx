@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import axios from 'axios';
+import { Card, Gallery, Image, Message } from 'pages/Home/home.styled';
 
 const Cast = () => {
   const { movieID } = useParams();
@@ -21,21 +22,18 @@ const Cast = () => {
   }, [movieID]);
 
   return (
-    // {console.log(cast)}
-    <ul>
+    <Gallery>
       {cast.map(actor => (
-        <li key={actor.id}>
-          <img
+        <Card key={actor.id}>
+          <Image
             alt={actor.name}
             src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-            width="240"
-            height="357"
-          ></img>
-          <p>{actor.name}</p>
-          <p>Character: {actor.character}</p>
-        </li>
+          ></Image>
+          <Message>{actor.name}</Message>
+          <Message>AS: {actor.character}</Message>
+        </Card>
       ))}
-    </ul>
+    </Gallery>
   );
 };
 

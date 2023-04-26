@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
+import { Card, Gallery, Image, Message } from './home.styled';
 
 const Home = () => {
   const [movieArray, setMovieArray] = useState([]);
@@ -21,16 +22,25 @@ const Home = () => {
   }, []);
 
     return (
-      <><h2>Trending movies</h2><ul>
-            {movieArray.map(movie => (
-                <li key={movie.id}>
-                    <Link to={`movies/${movie.id}`} state={{ from: location }}>
-                        {movie.title}
-                    </Link>
-                </li>
-            ))}
-        </ul></>
-  );
+      <>
+        {/* <h2>Trending movies</h2> */}
+        <Gallery>
+          {movieArray.map(movie => (
+            <Card key={movie.id}>
+              <Link to={`movies/${movie.id}`} state={{ from: location }}>
+                <Image
+                  alt={movie.title}
+                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  width="120"
+                  height="180"
+                ></Image>
+                <Message>{movie.title}</Message>
+              </Link>
+            </Card>
+          ))}
+        </Gallery>
+      </>
+    );
 };
 
 export default Home;

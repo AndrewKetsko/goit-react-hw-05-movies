@@ -54,6 +54,7 @@ export const Label = styled.span`
 `;
 
 export const Search = styled.header`
+margin-bottom: 15px;
   top: 0;
   left: 0;
   position: sticky;
